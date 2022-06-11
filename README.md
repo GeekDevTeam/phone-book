@@ -29,7 +29,7 @@
 
 
 ## Бэклог
-1. [parsing_format.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/core/format.py) - модуль для парсинга данных заданных в разных форматах
+1. [parsing_format.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/parsing_format.py) - модуль для парсинга данных заданных в разных форматах
     - [ ] Добавить словарь 
     ```
     FORMATS = [
