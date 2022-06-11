@@ -88,3 +88,15 @@
                 1. вызываем метод `parse_userData_by_delimeter`
                 2. Полученный результат добавляем в массив `parsed_formatData`
             3. Возвращаем сформировавшийся массив `parsed_formatData`
+
+2. [io_helper.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/utils/io_helper.py) - модуль помощник при работе с файлами
+    - [ ] Добавить метод `read_text_from_file(file_name)`
+        * Алгоритм:
+            1. Считывает данные с файла `file_name`
+            2. Закрывает файл
+            3. Возвращает считанные с файла данные
+    - [ ] Добавить метод `write_text_in_file(file_name, text)`
+        * Алгоритм:
+            1. Записывает `text` в файл `file_name`
+            2. Закрывает файл
+            
