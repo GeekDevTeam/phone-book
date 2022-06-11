@@ -30,7 +30,7 @@
 
 ## Бэклог
 1. [parsing_format.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/core/format.py) - модуль для парсинга данных заданных в разных форматах
-    1. Добавить словарь 
+    - [ ] Добавить словарь 
     ```
     FORMATS = [
         { # по-хорошему задать массив через точное определние структуры с помощью классов, но пока я не пробовал классы в питоне
@@ -62,8 +62,8 @@
         "\n;Фамилия_1,Имя_1,Телефон_1,Описание_1;;Фамилия_2,Имя_2,Телефон_2,Описание_2;\n   ;фамилия_1,имя_1,телефон_1,описание_1;;фамилия_2,имя_2,телефон_2,описание_2;    %;фамилия_1,имя_1,телефон_1,описание_1;;фамилия_2,имя_2,телефон_2,описание_2;%"
     ]
     ```
-    2. Добавить метод `parse_userProperties_by_delimeter(properties: string, userPropertiesDelimeter: string)`. Метод должен возвращать массив, из данных `properties`, разделенных с помощью `userPropertiesDelimeter`
-    3.  Добавить метод `parse_userData_by_delimeter(usersData: string, userDataDelimeter: string)`. 
+    - [ ] Добавить метод `parse_userProperties_by_delimeter(properties: string, userPropertiesDelimeter: string)`. Метод должен возвращать массив, из данных `properties`, разделенных с помощью `userPropertiesDelimeter`
+    - [ ] Добавить метод `parse_userData_by_delimeter(usersData: string, userDataDelimeter: string)`. 
         * Метод должен возвращать массив данных по каждому пользователю
         * Алгоритм: 
             1. Разбиваем строку `userData` с помощью разделителя `userDataDelimeter` -> получаем массив строк свойств пользователя
@@ -71,7 +71,7 @@
                 1. вызываем метод `parse_userProperties_by_delimeter`
                 2. Полученный результат добавляем в массив `parsed_usersData`
             3. Возвращаем сформировавшийся массив `parsed_usersData`
-    4.  Добавить метод `parse_formatData_by_delimeter(formatData: string, formatDataDelimeter: string)`
+    - [ ] Добавить метод `parse_formatData_by_delimeter(formatData: string, formatDataDelimeter: string)`
         * Метод должен возвращать массив, из данных `formatData`, разделенных с помощью `formatDataDelimeter`
         * Алгоритм: 
             1. Разбиваем строку `formatData` с помощью разделителя `formatDataDelimeter` -> получаем массив строк одного формата хранения
