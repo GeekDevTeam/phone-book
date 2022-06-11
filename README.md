@@ -63,16 +63,25 @@
     ]
     ```
     - [ ] Добавить метод `parse_userProperties_by_delimeter(properties: string, userPropertiesDelimeter: string)`. Метод должен возвращать массив, из данных `properties`, разделенных с помощью `userPropertiesDelimeter`
-    - [ ] Добавить метод `parse_userData_by_delimeter(usersData: string, userDataDelimeter: string)`. 
+        * Входные данные: `"Фамилия_1,Имя_1,Телефон_1,Описание_1"`
+        * Выходные данные: `["Фамилия_1", "Имя_1", "Телефон_1", "Описание_1"]`
+    - [ ] Добавить метод `parse_userData_by_delimeter(usersData: string, userDataDelimeter: string, userPropertiesDelimeter: string)`. 
         * Метод должен возвращать массив данных по каждому пользователю
+        * Входные данные: `";Фамилия_1,Имя_1,Телефон_1,Описание_1;;Фамилия_2,Имя_2,Телефон_2,Описание_2;"`
+        * Выходные данные: ```[ ["Фамилия_1", "Имя_1", "Телефон_1", "Описание_1"], ["Фамилия_2", "Имя_2", "Телефон_2", "Описание_2"] ]```
         * Алгоритм: 
             1. Разбиваем строку `userData` с помощью разделителя `userDataDelimeter` -> получаем массив строк свойств пользователя
             2. Для каждого элемента массива 
                 1. вызываем метод `parse_userProperties_by_delimeter`
                 2. Полученный результат добавляем в массив `parsed_usersData`
             3. Возвращаем сформировавшийся массив `parsed_usersData`
-    - [ ] Добавить метод `parse_formatData_by_delimeter(formatData: string, formatDataDelimeter: string)`
+    - [ ] Добавить метод `parse_formatData_by_delimeter(formatData: string, formatDataDelimeter: string, userDataDelimeter: string, userPropertiesDelimeter: string)`
         * Метод должен возвращать массив, из данных `formatData`, разделенных с помощью `formatDataDelimeter`
+        * Входные данные: `"\n;Фамилия_1,Имя_1,Телефон_1,Описание_1;;Фамилия_2,Имя_2,Телефон_2,Описание_2;\n"`
+        * Выходные данные: 
+        ```[ 
+            [ ["Фамилия_1", "Имя_1", "Телефон_1", "Описание_1"], ["Фамилия_2", "Имя_2", "Телефон_2", "Описание_2"] ]
+            ]```
         * Алгоритм: 
             1. Разбиваем строку `formatData` с помощью разделителя `formatDataDelimeter` -> получаем массив строк одного формата хранения
             2. Для каждого элемента массива 
