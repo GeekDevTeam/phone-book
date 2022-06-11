@@ -29,7 +29,7 @@
 
 
 ## Бэклог
-1. [parsing_format.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/parsing_format.py) - модуль для парсинга данных заданных в разных форматах
+1. [parsing_format.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/private/parsing_format.py) - модуль для парсинга данных заданных в разных форматах
     - [ ] Добавить словарь 
     ```
     FORMATS = [
@@ -75,8 +75,8 @@
                 1. вызываем метод `parse_userProperties_by_delimeter`
                 2. Полученный результат добавляем в массив `parsed_usersData`
             3. Возвращаем сформировавшийся массив `parsed_usersData`
-    - [ ] Добавить метод `parse_formatData_by_delimeter(formatData: string, formatDataDelimeter: string, userDataDelimeter: string, userPropertiesDelimeter: string)`
-        * Метод должен возвращать массив, из данных `formatData`, разделенных с помощью `formatDataDelimeter`
+    - [ ] Добавить метод `parse_formatData_by_delimeter(formatData: string, formatId: int)`, formatId - индекс формата из массива FORMATS
+        * Метод должен возвращать массив, из данных `formatData`, разделенных с помощью `FORMATS[formatId][formatDataDelimeter]`
         * Входные данные: `"\n;Фамилия_1,Имя_1,Телефон_1,Описание_1;;Фамилия_2,Имя_2,Телефон_2,Описание_2;\n"`
         * Выходные данные: 
         ```[ 
@@ -99,4 +99,24 @@
         * Алгоритм:
             1. Записывает `text` в файл `file_name`
             2. Закрывает файл
+
+3. [convert_format.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/private/convert_format.py) - модуль конвертации формата хранения данных
+    - [ ] Добавить метод `convert_format_by_formaId(formatData, formatId: int)`
+        * Входные данные:
+            ```
+            formatData = [ 
+            [ ["Фамилия_1", "Имя_1", "Телефон_1", "Описание_1"], ["Фамилия_2", "Имя_2", "Телефон_2", "Описание_2"] ]
+            ]
+            formatId=0
+            ```
+        * Выходные данные: `"\n;Фамилия_1,Имя_1,Телефон_1,Описание_1;;Фамилия_2,Имя_2,Телефон_2,Описание_2;\n"`
+        * Алгоритм: 
+            1. formatDataStr = []
+            2. for userData in formatData
+                1. userDataStr = []
+                2. for userProperties in userData
+                    1. userDataStr.append(f'{FORMATS[formatId]['userPropertiesDelimeter']}'.join(userProperties)) # ["Фамилия_1,Имя_1,Телефон_1,Описание_1", "Фамилия_2,Имя_2,Телефон_2,Описание_2"]
+                3. formatDataStr.append(f'{FORMATS[formatId]['userDataDelimeter']}'.join(userDataStr))
+            3. Возвращаем f'{FORMATS[formatId]['formatDataDelimeter']}'.join(formatDataStr)
+
             
