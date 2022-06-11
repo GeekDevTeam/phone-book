@@ -29,7 +29,7 @@
 
 
 ## Бэклог
-1. [parsing_format.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/private/parsing_format.py) - модуль для парсинга данных заданных в разных форматах
+1. [parsing_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/parsing_format.py) - модуль для парсинга данных заданных в разных форматах
     - [ ] Добавить словарь 
     ```
     FORMATS = [
@@ -89,7 +89,7 @@
                 2. Полученный результат добавляем в массив `parsed_formatData`
             3. Возвращаем сформировавшийся массив `parsed_formatData`
 
-2. [io_helper.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/utils/io_helper.py) - модуль помощник при работе с файлами
+2. [io_helper.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/utils/io_helper.py) - модуль помощник при работе с файлами
     - [ ] Добавить метод `read_text_from_file(file_name)`
         * Алгоритм:
             1. Считывает данные с файла `file_name`
@@ -100,7 +100,7 @@
             1. Записывает `text` в файл `file_name`
             2. Закрывает файл
 
-3. [convert_format.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/private/convert_format.py) - модуль конвертации формата хранения данных
+3. [convert_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/convert_format.py) - модуль конвертации формата хранения данных
     - [ ] Добавить метод `convert_format_by_formaId(formatData, formatId: int)`
         * Входные данные:
             ```
@@ -119,7 +119,7 @@
                 3. formatDataStr.append(f'{FORMATS[formatId]['userDataDelimeter']}'.join(userDataStr))
             3. Возвращаем f'{FORMATS[formatId]['formatDataDelimeter']}'.join(formatDataStr)
 
-4. [meny.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/meny.py) - модуль для работы с менюшкой приложения
+4. [meny.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/meny.py) - модуль для работы с менюшкой приложения
     - [ ] Добавить метод `print_startup()`. 
         * Метод должен выводить в консоль меню со следующим текстом
         ```
@@ -144,4 +144,4 @@
         Пожалуйста перезапустите его
         ```
 
-5. [main.py](https://github.com/GeekDevTeam/Calc-Console-App/tree/master/src/main.py) - точка входа программы с основной бизнес-логикой
+5. [main.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/main.py) - точка входа программы с основной бизнес-логикой
