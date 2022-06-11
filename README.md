@@ -28,7 +28,7 @@
     *и т.д.*
 
 
-## Бэклог
+## Описание модулей
 1. [parsing_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/parsing_format.py) - модуль для парсинга данных заданных в разных форматах
 
 2. [io_helper.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/utils/io_helper.py) - модуль помощник при работе с файлами
