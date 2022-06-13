@@ -1,6 +1,5 @@
-"""
-Метод print_startup выводит на экран меню приложения.
-"""
+# Метод print_startup выводит на экран меню приложения.
+
 
 def print_startup():
     print("""
@@ -15,9 +14,9 @@ def print_startup():
     """)
 
 
-"""
-Метод print_shutdown выводит на экран сообщение перед закрытием приложения.
-"""
+
+# Метод print_shutdown выводит на экран сообщение перед закрытием приложения.
+
 
 def print_shutdown():
     print("""
@@ -25,9 +24,9 @@ def print_shutdown():
     """)
 
 
-"""
+
 # Метод print_unhandle_error выводит на экран сообщение об ошибке в приложении.
-"""
+
 
 def print_unhandle_error():
     print("""
