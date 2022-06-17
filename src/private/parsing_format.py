@@ -14,6 +14,10 @@ def parse_user_data_by_delimeter(users_data, user_data_delimeter, user_propertie
 
 
 def parse_format_data_by_delimeter(format_data, format_id):
+    '''
+    разделяет массив format_data по разделителям formatDataDelimeter и далее полученные 
+    массивы разделяет по userDataDelimeter и userPropertiesDelimeter
+    '''
     temp_list = format_data.split(FORMATS[format_id]['formatDataDelimeter'])
     parsed_format_data = []
     for data in temp_list:
