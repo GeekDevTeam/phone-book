@@ -281,3 +281,5 @@ healthchecksdb
 srcapp.yaml
 srcinf.yaml
 
+# Other
+__pycache__
