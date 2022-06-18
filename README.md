@@ -1,3 +1,7 @@
+# Архитектура приложения
+
+![Architecture](Architecture.drawio.svg#center)
+
 # Задание
     Создать телефонный справочник с возможностью импорта и экспорта данных в нескольких форматах. Смысл - такой же, как на семинаре: сначала продумать архитектуру приложения, разбить задачу на отдельные модули и каждый модуль пишет отдельный человек (можно взять на себя и два, если количество модулей превышает количество человек).
 
@@ -29,12 +33,11 @@
 
 
 ## Описание модулей
-1. [parsing_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/parsing_format.py) - модуль для парсинга данных заданных в разных форматах
+| Модуль                                                                                                   | Описание                                              | Автор        | Task                                               |   |   |   |   |   |   |
+|----------------------------------------------------------------------------------------------------------|-------------------------------------------------------|--------------|----------------------------------------------------|---|---|---|---|---|---|
+| [parsing_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/parsing_format.py) | модуль для парсинга данных заданных в разных форматах | Никита Савин | https://github.com/GeekDevTeam/phone-book/issues/1 |   |   |   |   |   |   |
+| [io_helper.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/utils/io_helper.py)             | модуль помощник при работе с файлами                  | Ксения       | https://github.com/GeekDevTeam/phone-book/issues/2 |   |   |   |   |   |   |
+| [convert_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/convert_format.py) | модуль конвертации формата хранения данных            | Алексей      | https://github.com/GeekDevTeam/phone-book/issues/3 |   |   |   |   |   |   |
+| [meny.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/meny.py)                             | модуль для работы с менюшкой приложения               | Руслан       | https://github.com/GeekDevTeam/phone-book/issues/4 |   |   |   |   |   |   |
+| [main.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/main.py)                             | точка входа программы с основной бизнес-логикой       | Адиль        | https://github.com/GeekDevTeam/phone-book/issues/5 |   |   |   |   |   |   |
 
-2. [io_helper.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/utils/io_helper.py) - модуль помощник при работе с файлами
-
-3. [convert_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/convert_format.py) - модуль конвертации формата хранения данных
-
-4. [meny.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/meny.py) - модуль для работы с менюшкой приложения
-
-5. [main.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/main.py) - точка входа программы с основной бизнес-логикой
