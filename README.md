@@ -33,11 +33,11 @@
 
 
 ## Описание модулей
-| Модуль                                                                                                   | Описание                                              | Автор        | Task                                               |   |   |   |   |   |   |
-|----------------------------------------------------------------------------------------------------------|-------------------------------------------------------|--------------|----------------------------------------------------|---|---|---|---|---|---|
-| [parsing_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/parsing_format.py) | модуль для парсинга данных заданных в разных форматах | Никита Савин | https://github.com/GeekDevTeam/phone-book/issues/1 |   |   |   |   |   |   |
-| [io_helper.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/utils/io_helper.py)             | модуль помощник при работе с файлами                  | Ксения       | https://github.com/GeekDevTeam/phone-book/issues/2 |   |   |   |   |   |   |
-| [convert_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/convert_format.py) | модуль конвертации формата хранения данных            | Алексей      | https://github.com/GeekDevTeam/phone-book/issues/3 |   |   |   |   |   |   |
-| [meny.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/meny.py)                             | модуль для работы с менюшкой приложения               | Руслан       | https://github.com/GeekDevTeam/phone-book/issues/4 |   |   |   |   |   |   |
-| [main.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/main.py)                             | точка входа программы с основной бизнес-логикой       | Адиль        | https://github.com/GeekDevTeam/phone-book/issues/5 |   |   |   |   |   |   |
+| Модуль                                                                                                   | Описание                                              | Автор        | Task                                               |
+|----------------------------------------------------------------------------------------------------------|-------------------------------------------------------|--------------|----------------------------------------------------|
+| [parsing_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/parsing_format.py) | модуль для парсинга данных заданных в разных форматах | Никита Савин | https://github.com/GeekDevTeam/phone-book/issues/1 |
+| [io_helper.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/utils/io_helper.py)             | модуль помощник при работе с файлами                  | Ксения       | https://github.com/GeekDevTeam/phone-book/issues/2 |
+| [convert_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/convert_format.py) | модуль конвертации формата хранения данных            | Алексей      | https://github.com/GeekDevTeam/phone-book/issues/3 |
+| [meny.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/meny.py)                             | модуль для работы с менюшкой приложения               | Руслан       | https://github.com/GeekDevTeam/phone-book/issues/4 |
+| [main.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/main.py)                             | точка входа программы с основной бизнес-логикой       | Адиль        | https://github.com/GeekDevTeam/phone-book/issues/5 |
 
