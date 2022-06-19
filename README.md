@@ -1,43 +1,46 @@
-# Архитектура приложения
+# Телефонный справочник
 
-![Architecture](Architecture.drawio.svg#center)
+## Файловая архитектура приложения
 
-# Задание
-    Создать телефонный справочник с возможностью импорта и экспорта данных в нескольких форматах. Смысл - такой же, как на семинаре: сначала продумать архитектуру приложения, разбить задачу на отдельные модули и каждый модуль пишет отдельный человек (можно взять на себя и два, если количество модулей превышает количество человек).
+```
+C:.
+│   .gitattributes
+│   .gitignore
+│   Architecture.drawio.svg
+│   LICENSE
+│   README.md
+│
+├───docs # различная документация по приложению
+│       console_app.md
+│       telegram_bot.md
+│
+└───src # корень приложения
+    │   .env # переменные окружения для приложения
+    │   console_app.py # точка входа для консольного приложения
+    │   phone-book.db # телефонный справочник
+    │   startup.py # основная логика по загрузке конфигураций телеграм бота
+    │   telegram_bot.py # точка входа для запуска телеграм бота
+    │
+    ├───commands # команды для телеграм бота
+    │       entry.py # файл для загрузки всех команд в одну зависимость
+    │       start_command.py # обработчик команды /start
+    │
+    ├───configurations # папка с различной конфигурацией телеграм бота
+    │       configure.py # функции необходимые для конфигурации телеграм бота
+    │       environments.py # словарь с переменными окружения
+    │
+    ├───core # различные переменные во всем проекте 
+    │       format.py # список словарей с форматами хранения данных 
+    │
+    ├───private # модули используемые во всем проекте
+    │       convert_format.py # модуль конвертирования формата хранения данных из одного в другой
+    │       meny.py # моудль для работы с меню приложения
+    │       parsing_format.py # модуль для парсинга данных из телефонного справочника
+    │
+    └───utils # различные независимые модули-помощники, которые не решают бизнес-задачу, а нацелены на конкретное модульное действие
+            io_helper.py
+```
 
-    Под форматами понимаем структуру файлов, например:в файле на одной строке хранится одна часть записи, пустая строка - разделитель*
+# Release Notes
 
-    *Фамилия_1*
-
-    *Имя_1*
-
-    *Телефон_1*
-
-    *Описание_1*
-
-    *Фамилия_2*
-
-    *Имя_2*
-
-    *Телефон_2*
-
-    *Описание_2*
-
-    *и т.д.в файле на одной строке хранится все записи, символ разделитель - **;***
-
-    *Фамилия_1,Имя_1,Телефон_1,Описание_1*
-
-    *Фамилия_2,Имя_2,Телефон_2,Описание_2*
-
-    *и т.д.*
-
-
-## Описание модулей
-| Модуль                                                                                                   | Описание                                              | Автор        | Task                                               |
-|----------------------------------------------------------------------------------------------------------|-------------------------------------------------------|--------------|----------------------------------------------------|
-| [parsing_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/parsing_format.py) | модуль для парсинга данных заданных в разных форматах | [Никита Савин](https://github.com/SavinNik89) | https://github.com/GeekDevTeam/phone-book/issues/1 |
-| [io_helper.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/utils/io_helper.py)             | модуль помощник при работе с файлами                  | [Ксения](https://github.com/xenia-t)       | https://github.com/GeekDevTeam/phone-book/issues/2 |
-| [convert_format.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/private/convert_format.py) | модуль конвертации формата хранения данных            | [Алексей](https://github.com/Alexey-Kokushkin)      | https://github.com/GeekDevTeam/phone-book/issues/3 |
-| [meny.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/meny.py)                             | модуль для работы с менюшкой приложения               | [Руслан](https://github.com/Ruslan-Botyrov)       | https://github.com/GeekDevTeam/phone-book/issues/4 |
-| [main.py](https://github.com/GeekDevTeam/phone-book/tree/master/src/main.py)                             | точка входа программы с основной бизнес-логикой       | [Адиль](https://github.com/AdilBikeev)        | https://github.com/GeekDevTeam/phone-book/issues/5 |
-
+1. [Реализация консольного варианта приложения](https://github.com/GeekDevTeam/phone-book/releases/tag/v1.0.0)

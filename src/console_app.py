@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-import meny
+import private.meny as meny
 import core.format as format_core
 import utils.io_helper as io_helper
 import private.parsing_format as parsing_format
