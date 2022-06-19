@@ -1,5 +1,10 @@
 # Телефонный справочник
 
+## Docs
+
+1. [Документация по консольному приложению](https://github.com/GeekDevTeam/phone-book/blob/main/docs/console_app.md)
+2. [Документация по телеграм боту](https://github.com/GeekDevTeam/phone-book/blob/main/docs/telegram_bot.md)
+
 ## Файловая архитектура приложения
 
 ```
