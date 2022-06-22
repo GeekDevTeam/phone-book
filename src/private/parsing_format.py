@@ -42,7 +42,16 @@ def parse_all_format_data(format_data: str):
         parsed_format_data.append(parse_format_data_by_delimeter(format_data, format_id))
     return parsed_format_data
 
-def print_all_format_data(parsed_format_data: list):
+def get_all_format_data(parsed_format_data: list) -> str:
+    """
+    Возвращает данные с телефонного справочника в виде:
+    Format={format_id}) formatDataDelimeter='0', userDataDelimeter=';', userPropertiesDelimeter=','
+    UserId=0)
+        Фамилия: Иванов
+        Имя: Иван
+        Телефон: 88005553535
+        О себе: Я такой весь хороший
+    """
     output: str = ''
 
     for format_id in range(len(FORMATS)):
@@ -58,4 +67,4 @@ def print_all_format_data(parsed_format_data: list):
                 user_data_dict = UserData.parse(user_data)
                 user_data_str = UserData.to_str(user_data_dict)
                 output += f'{user_data_str}\n'
-    print(output)
+    return output

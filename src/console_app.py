@@ -58,7 +58,7 @@ def startup_view():
         if answer == 1:
             format_data = io_helper.read_text_from_file(DB_FULL_FILE_NAME)
             format_data_parse_res = parsing_format.parse_all_format_data(format_data)
-            parsing_format.print_all_format_data(format_data_parse_res)
+            print(parsing_format.get_all_format_data(format_data_parse_res))
         elif answer == 2:
             format_id = select_format_view()
 
