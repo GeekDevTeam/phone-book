@@ -2,6 +2,7 @@ from ast import pattern
 import re
 
 from core.format import FORMATS
+import models.UserData as UserData
 
 # Парсит данные между двумя разделителями
 def parse_all_data_between_delimeter(data: str, delimeter_start: str, delimeter_end: str):
@@ -42,11 +43,19 @@ def parse_all_format_data(format_data: str):
     return parsed_format_data
 
 def print_all_format_data(parsed_format_data: list):
+    output: str = ''
+
     for format_id in range(len(FORMATS)):
         formatDataDelimeter = FORMATS[format_id]['formatDataDelimeter']
         userDataDelimeter = FORMATS[format_id]['userDataDelimeter']
         userPropertiesDelimeter = FORMATS[format_id]['userPropertiesDelimeter']
 
-        print(f'Format {format_id}: formatDataDelimeter=\'{formatDataDelimeter}\', userDataDelimeter=\'{userDataDelimeter}\', userPropertiesDelimeter=\'{userPropertiesDelimeter}\'')
-        for user_data in parsed_format_data[format_id]:
-            print(user_data)
+        output +=f'Format={format_id}) formatDataDelimeter=\'{formatDataDelimeter}\', userDataDelimeter=\'{userDataDelimeter}\', userPropertiesDelimeter=\'{userPropertiesDelimeter}\''
+        for users in parsed_format_data[format_id]:
+            for i in range(len(users)):
+                output += f'\nUserId={i})'
+                user_data = users[i]
+                user_data_dict = UserData.parse(user_data)
+                user_data_str = UserData.to_str(user_data_dict)
+                output += f'{user_data_str}\n'
+    print(output)
