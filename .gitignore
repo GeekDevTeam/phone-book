@@ -283,3 +283,5 @@ srcinf.yaml
 
 # Other
 __pycache__
+phone-book-convert.db
+phone-book.db

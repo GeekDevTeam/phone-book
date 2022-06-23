@@ -1,33 +1,21 @@
+from enum import IntEnum
 import os
 from pathlib import Path
+from private.convert_format import convert_format_by_format_id
 
 import private.meny as meny
 import core.format as format_core
-import utils.io_helper as io_helper
-import private.parsing_format as parsing_format
-import private.convert_format as convert_format
+from private.parsing_format import get_all_format_data, parse_all_format_data
+
+from utils.io_helper import read_text_from_file, write_text_in_file
+from utils.list_helper import concate_sub_lst, is_exist_index
 
 clear = lambda: os.system('cls')
 
 DB_FULL_FILE_NAME = Path.cwd() / "phone-book.db"
-OUTPUT_FULL_FILE_NAME = Path.cwd() / "phone-book-convert.db"
-
-def concate_sub_lst(lst):
-    """
-    Понижает уровень хранения данных на 1 объединяя данные на одном уровне.
-    Пример: [[1,2], [3,4]] => [1,2,3,4]
-    """
-    res = []
-    for sub_lst in lst:
-        for item in sub_lst:
-            res.append(item)
-    return res
-
-def is_exist_index(lst, index):
-    """
-    Проверяет наличие индекса в списке
-    """
-    return index >= 0 and index < len(lst)
+OUTPUT_FULL_FILE_NAME = DB_FULL_FILE_NAME 
+# For debug
+# OUTPUT_FULL_FILE_NAME =  Path.cwd() / "phone-book-convert.db"
 
 def select_format_view():
     """
@@ -49,28 +37,40 @@ def startup_view():
     """
     Представление с выбором операции над приложением
     """
+    class StartupCommands(IntEnum):
+        """
+        Перечисление команд из текущего меню.
+        """
+        EXIT = 0 # Выход
+        SHOW_DATA = 1 # Вывод данных по пользователям из БД 
+        CONVERT_FORMAT = 2 # Преобразование формата хранения данны
+        ADD_NEW_USER = 3 # Добавление нового пользователя
+
     answer = -1
     while answer != 0:
         clear()
         meny.print_startup()
         answer = int(input())
         clear()
-        if answer == 1:
-            format_data = io_helper.read_text_from_file(DB_FULL_FILE_NAME)
-            format_data_parse_res = parsing_format.parse_all_format_data(format_data)
-            print(parsing_format.get_all_format_data(format_data_parse_res))
-        elif answer == 2:
+        if answer == StartupCommands.SHOW_DATA:
+            format_data = read_text_from_file(DB_FULL_FILE_NAME)
+            format_data_parse_res = parse_all_format_data(format_data)
+            print(get_all_format_data(format_data_parse_res))
+        elif answer == StartupCommands.CONVERT_FORMAT:
             format_id = select_format_view()
 
-            format_data = io_helper.read_text_from_file(DB_FULL_FILE_NAME)
-            format_data_parse_res = parsing_format.parse_all_format_data(format_data)
+            format_data = read_text_from_file(DB_FULL_FILE_NAME)
+            format_data_parse_res = parse_all_format_data(format_data)
             any_formats_users = concate_sub_lst(format_data_parse_res)
             users = concate_sub_lst(any_formats_users)
-            format_data_convert_res = convert_format.convert_format_by_format_id(users, format_id)
+            format_data_convert_res = convert_format_by_format_id(users, format_id)
             
-            io_helper.write_text_in_file(OUTPUT_FULL_FILE_NAME, format_data_convert_res)
+            write_text_in_file(OUTPUT_FULL_FILE_NAME, format_data_convert_res)
             meny.print_success_convert_format(OUTPUT_FULL_FILE_NAME)
-        elif answer == 0:
+        elif answer == StartupCommands.ADD_NEW_USER:
+            #meny.print_shutdown()
+            break
+        elif answer == StartupCommands.EXIT:
             meny.print_shutdown()
             break
         else:
