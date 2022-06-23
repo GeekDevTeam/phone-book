@@ -13,7 +13,9 @@ from utils.list_helper import concate_sub_lst, is_exist_index
 clear = lambda: os.system('cls')
 
 DB_FULL_FILE_NAME = Path.cwd() / "phone-book.db"
-OUTPUT_FULL_FILE_NAME = Path.cwd() / "phone-book-convert.db"
+OUTPUT_FULL_FILE_NAME = DB_FULL_FILE_NAME 
+# For debug
+# OUTPUT_FULL_FILE_NAME =  Path.cwd() / "phone-book-convert.db"
 
 def select_format_view():
     """
