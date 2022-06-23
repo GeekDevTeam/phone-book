@@ -3,6 +3,8 @@ import re
 
 from core.format import FORMATS
 import models.UserData as UserData
+from utils.io_helper import read_text_from_file
+from utils.list_helper import concate_sub_lst
 
 # Парсит данные между двумя разделителями
 def parse_all_data_between_delimeter(data: str, delimeter_start: str, delimeter_end: str):
@@ -68,3 +70,13 @@ def get_all_format_data(parsed_format_data: list) -> str:
                 user_data_str = UserData.to_str(user_data_dict)
                 output += f'{user_data_str}\n'
     return output
+
+def parse_users_from_file(file_name: str) -> list:
+    """
+    Парсит список с данными пользователей из файла и возвращает его.
+    """
+    format_data = read_text_from_file(file_name)
+    format_data_parse_res = parse_all_format_data(format_data)
+    any_formats_users = concate_sub_lst(format_data_parse_res)
+    users = concate_sub_lst(any_formats_users)
+    return users
