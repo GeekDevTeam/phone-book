@@ -1,3 +1,4 @@
+from enum import IntEnum
 import os
 from pathlib import Path
 from private.convert_format import convert_format_by_format_id
@@ -34,17 +35,26 @@ def startup_view():
     """
     Представление с выбором операции над приложением
     """
+    class StartupCommands(IntEnum):
+        """
+        Перечисление команд из текущего меню.
+        """
+        EXIT = 0 # Выход
+        SHOW_DATA = 1 # Вывод данных по пользователям из БД 
+        CONVERT_FORMAT = 2 # Преобразование формата хранения данны
+        ADD_NEW_USER = 3 # Добавление нового пользователя
+
     answer = -1
     while answer != 0:
         clear()
         meny.print_startup()
         answer = int(input())
         clear()
-        if answer == 1:
+        if answer == StartupCommands.SHOW_DATA:
             format_data = read_text_from_file(DB_FULL_FILE_NAME)
             format_data_parse_res = parse_all_format_data(format_data)
             print(get_all_format_data(format_data_parse_res))
-        elif answer == 2:
+        elif answer == StartupCommands.CONVERT_FORMAT:
             format_id = select_format_view()
 
             format_data = read_text_from_file(DB_FULL_FILE_NAME)
@@ -55,7 +65,10 @@ def startup_view():
             
             write_text_in_file(OUTPUT_FULL_FILE_NAME, format_data_convert_res)
             meny.print_success_convert_format(OUTPUT_FULL_FILE_NAME)
-        elif answer == 0:
+        elif answer == StartupCommands.ADD_NEW_USER:
+            #meny.print_shutdown()
+            break
+        elif answer == StartupCommands.EXIT:
             meny.print_shutdown()
             break
         else:
