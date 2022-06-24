@@ -6,17 +6,13 @@ from private.convert_format import convert_format_by_format_id
 
 import private.meny as meny
 import core.format as format_core
-<<<<<<< HEAD
 import utils.io_helper as io_helper
 import private.parsing_format as parsing_format
 import private.convert_format as convert_format
-from commands.convert_to import convert_to
-=======
 from private.parsing_format import get_all_format_data, parse_all_format_data, parse_users_from_file
 
 from utils.io_helper import read_text_from_file, write_text_in_file
 from utils.list_helper import concate_sub_lst, is_exist_index
->>>>>>> 9acbc183782ce2660498f0d502c76514178abeb8
 
 clear = lambda: os.system('cls')
 
