@@ -1,7 +1,7 @@
 from core.format import FORMATS
 # from commands.convert_to import convert_to
 
-def convert_format_by_format_id(users: list, format_id: int):
+def convert_format_by_format_id(users: list, format_id: int = 0):
     """
     Конвертирует формат хранения данных в format_id.
 

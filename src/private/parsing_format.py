@@ -2,6 +2,9 @@ from ast import pattern
 import re
 
 from core.format import FORMATS
+import models.UserData as UserData
+from utils.io_helper import read_text_from_file
+from utils.list_helper import concate_sub_lst
 
 # Парсит данные между двумя разделителями
 def parse_all_data_between_delimeter(data: str, delimeter_start: str, delimeter_end: str):
@@ -41,12 +44,39 @@ def parse_all_format_data(format_data: str):
         parsed_format_data.append(parse_format_data_by_delimeter(format_data, format_id))
     return parsed_format_data
 
-def print_all_format_data(parsed_format_data: list):
+def get_all_format_data(parsed_format_data: list) -> str:
+    """
+    Возвращает данные с телефонного справочника в виде:
+    Format={format_id}) formatDataDelimeter='0', userDataDelimeter=';', userPropertiesDelimeter=','
+    UserId=0)
+        Фамилия: Иванов
+        Имя: Иван
+        Телефон: 88005553535
+        О себе: Я такой весь хороший
+    """
+    output: str = ''
+
     for format_id in range(len(FORMATS)):
         formatDataDelimeter = FORMATS[format_id]['formatDataDelimeter']
         userDataDelimeter = FORMATS[format_id]['userDataDelimeter']
         userPropertiesDelimeter = FORMATS[format_id]['userPropertiesDelimeter']
 
-        print(f'Format {format_id}: formatDataDelimeter=\'{formatDataDelimeter}\', userDataDelimeter=\'{userDataDelimeter}\', userPropertiesDelimeter=\'{userPropertiesDelimeter}\'')
-        for user_data in parsed_format_data[format_id]:
-            print(user_data)
+        output +=f'Format={format_id}) formatDataDelimeter=\'{formatDataDelimeter}\', userDataDelimeter=\'{userDataDelimeter}\', userPropertiesDelimeter=\'{userPropertiesDelimeter}\''
+        for users in parsed_format_data[format_id]:
+            for i in range(len(users)):
+                output += f'\nUserId={i})'
+                user_data = users[i]
+                user_data_dict = UserData.parse(user_data)
+                user_data_str = UserData.to_str(user_data_dict)
+                output += f'{user_data_str}\n'
+    return output
+
+def parse_users_from_file(file_name: str) -> list:
+    """
+    Парсит список с данными пользователей из файла и возвращает его.
+    """
+    format_data = read_text_from_file(file_name)
+    format_data_parse_res = parse_all_format_data(format_data)
+    any_formats_users = concate_sub_lst(format_data_parse_res)
+    users = concate_sub_lst(any_formats_users)
+    return users

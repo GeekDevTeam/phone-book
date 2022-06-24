@@ -1,4 +1,7 @@
 from core.format import FORMATS
+import models.UserData as UserDataModule
+
+#TODO: Переделать все методы с print -> чтобы вместо вывода возвращали строки
 
 # Метод print_startup выводит на экран меню приложения.
 def print_startup():
@@ -8,6 +11,7 @@ def print_startup():
 МЕНЮ
 1. Вывод данных по пользователям из БД 
 2. Преобразование формата хранения данных 
+3. Добавление нового пользователя
 0. Выйти из приложения
     
 Введите пожалуйста номер желаемого действия из меню: 
@@ -51,3 +55,18 @@ def print_select_format_view():
 
 def print_pause():
     input("Для продолжения нажмите Enter")
+
+def msg_add_new_user_view():
+    user_properties = map(lambda prop: f'[{prop}]', UserDataModule.UserData.__annotations__.keys())
+    user_properties_str = ' '.join(user_properties)
+    return f"""
+Укажите данные пользователя в формате: '{user_properties_str}'
+
+    """
+
+def msg_add_new_user_success(user_data: UserDataModule.UserData):
+        return f"""
+Пользователь с данными
+{UserDataModule.to_str(user_data)}
+Успешно добавлен в БД!
+    """
