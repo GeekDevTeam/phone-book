@@ -16,7 +16,7 @@ from utils.io_helper import write_text_in_file
 from utils.list_helper import concate_sub_lst, is_exist_index
 
 
-async def convert_to(update: Update, context: ContextTypes.context):
+async def convert_to_command(update: Update, context: ContextTypes.context):
     """
     Обработчик команды /convert_to
     """
