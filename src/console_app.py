@@ -6,6 +6,7 @@ import core.format as format_core
 import utils.io_helper as io_helper
 import private.parsing_format as parsing_format
 import private.convert_format as convert_format
+from commands.convert_to import convert_to
 
 clear = lambda: os.system('cls')
 
