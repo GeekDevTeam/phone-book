@@ -9,7 +9,7 @@ import core.format as format_core
 
 from private.parsing_format import parse_all_format_data
 from private.convert_format import convert_format_by_format_id
-from private.meny import msg_converting_format, msg_wrong_converting_command
+import private.meny as meny
 
 from utils.io_helper import read_text_from_file
 from utils.io_helper import write_text_in_file
@@ -37,7 +37,7 @@ async def convert_to_command(update: Update, context: ContextTypes.context):
                 users = concate_sub_lst(any_formats_users)
                 format_data_convert_res = convert_format_by_format_id(users, format_id)
                 write_text_in_file(OUTPUT_FULL_FILE_NAME, format_data_convert_res)
-                msg = msg_converting_format(format_data_convert_res, OUTPUT_FULL_FILE_NAME)
+                msg = meny.msg_converting_format(format_data_convert_res, OUTPUT_FULL_FILE_NAME)
                 await context.bot.send_message(
                     chat_id=update.effective_chat.id,
                     text=msg
@@ -45,7 +45,7 @@ async def convert_to_command(update: Update, context: ContextTypes.context):
                 return
 
     # Если из функции не вышли -> произошла ошибка
-    msg = msg_wrong_converting_command(update.message.text)
+    msg = meny.msg_wrong_converting_command(update.message.text)
     await context.bot.send_message(
     chat_id=update.effective_chat.id,
     text=msg)
