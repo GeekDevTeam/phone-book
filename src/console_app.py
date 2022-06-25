@@ -80,7 +80,6 @@ def startup_view():
             
             write_text_in_file(OUTPUT_FULL_FILE_NAME, format_data_convert_res)
             print(meny.msg_add_new_user_success(new_user_data))
-            break
         elif answer == StartupCommands.EXIT:
             print(meny.msg_shutdown())
             break
