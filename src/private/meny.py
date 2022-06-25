@@ -1,11 +1,10 @@
 from core.format import FORMATS
 import models.UserData as UserDataModule
 
-#TODO: Переделать все методы с print -> чтобы вместо вывода возвращали строки
+from commands.entry import commands
 
-# Метод print_startup выводит на экран меню приложения.
-def print_startup():
-    print("""
+def msg_startup():
+    return """
 Приложение "Телефонный справочник:"
     
 МЕНЮ
@@ -15,58 +14,85 @@ def print_startup():
 0. Выйти из приложения
     
 Введите пожалуйста номер желаемого действия из меню: 
-    """)
+    """
 
-# Метод print_shutdown выводит на экран сообщение перед закрытием приложения.
-def print_shutdown():
-    print("""
+def msg_shutdown():
+    return """
 Спасибо что воспользовались нашим приложением!
-    """)
+    """
 
-# Метод print_unhandle_error выводит на экран сообщение об ошибке в приложении.
-def print_unhandle_error():
-    print("""
+def msg_unhandle_error():
+    return """
 Что-то пошло не так с приложением :'(
 Пожалуйста перезапустите его
+    """
+
+
+def msg_unknown_command():
+    return "Неизвестная команда."
+
+
+def msg_wrong_converting_command(msg):
+    return(f"""Неверная команда. Введите вариант конвертации от 0 до 2: \n {msg}""")
+
+
+def msg_converting_format(format_data_convert_res, OUTPUT_FULL_FILE_NAME):
+    return(f"""
+Преобразование формата хранения данных:\n \n {format_data_convert_res} \n 
+Преобразование формата хранения данных прошло успешно.
+Файл был сохранен по адресу:{OUTPUT_FULL_FILE_NAME}
     """)
 
-def print_unknown_command():
-    print("Неизвестная команда.")
 
-def print_success_convert_format(output_full_file_name):
-    print(f"""
+def msg_success_convert_format(output_full_file_name):
+    return f"""
 Преобразование формата хранения данных прошло успешно.
 Файл был сохранен по адресу:{output_full_file_name}
-    """)
+    """
 
-def print_select_format_view():
-    print(f"""
+
+def msg_select_format_view():
+    msg = f"""
 Приложение "Телефонный справочник:"
     
 МЕНЮ
-""")
+"""
     for format_id in range(len(FORMATS)):
         formatDataDelimeter = FORMATS[format_id]['formatDataDelimeter']
         userDataDelimeter = FORMATS[format_id]['userDataDelimeter']
         userPropertiesDelimeter = FORMATS[format_id]['userPropertiesDelimeter']
         example = FORMATS[format_id]['example']
-        print(f'format_id={format_id}) formatDataDelimeter=\'{formatDataDelimeter}\', userDataDelimeter=\'{userDataDelimeter}\', userPropertiesDelimeter=\'{userPropertiesDelimeter}\', example=\'{example}\'')
-    print()
+        msg += f'\nformat_id={format_id}) formatDataDelimeter=\'{formatDataDelimeter}\', userDataDelimeter=\'{userDataDelimeter}\', userPropertiesDelimeter=\'{userPropertiesDelimeter}\', example=\'{example}\''
+    msg +="\n"
+
+    return msg
+
 
 def print_pause():
     input("Для продолжения нажмите Enter")
 
+
 def msg_add_new_user_view():
-    user_properties = map(lambda prop: f'[{prop}]', UserDataModule.UserData.__annotations__.keys())
+    user_properties = map(
+        lambda prop: f'[{prop}]', UserDataModule.UserData.__annotations__.keys())
     user_properties_str = ' '.join(user_properties)
     return f"""
 Укажите данные пользователя в формате: '{user_properties_str}'
 
     """
 
+
 def msg_add_new_user_success(user_data: UserDataModule.UserData):
-        return f"""
+    return f"""
 Пользователь с данными
 {UserDataModule.to_str(user_data)}
 Успешно добавлен в БД!
     """
+
+def msg_all_commands():
+    msg = ""
+    command_names = commands.keys()
+    for command_name in command_names:
+        desc = commands[command_name]['description']
+        msg += f"/{command_name} - {desc}\n"
+    return msg
