@@ -7,7 +7,7 @@ from utils.io_helper import read_text_from_file
 
 DB_FULL_FILE_NAME = Path.cwd() / "phone-book.db"
 
-async def show_data(update: Update, context: ContextTypes.context):
+async def show_phone_book_command(update: Update, context: ContextTypes.context):
     """
     Обработчик команды /show
     """
