@@ -51,4 +51,4 @@ C:.
 # Release Notes
 
 1. [Реализация консольного варианта приложения](https://github.com/GeekDevTeam/phone-book/releases/tag/v1.0.0)
-2. [Реализация консольного варианта приложения](https://github.com/GeekDevTeam/phone-book/releases/tag/v1.1.0)
+2. [Реализация телеграм-бота](https://github.com/GeekDevTeam/phone-book/releases/tag/v1.1.0)
