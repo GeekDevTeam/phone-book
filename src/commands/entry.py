@@ -1,4 +1,5 @@
 from commands.help_command import help_command
+from commands.show_phone_book_command import show_phone_book_command
 from commands.start_command import start_command
 from commands.convert_to_command import convert_to_command
 # Словарь команд телеграм бота
@@ -15,4 +16,8 @@ commands = {
         'command_handler': help_command,
         'description': 'Отображает список доступных команд'
     },
+    'show': {
+        'command_handler': show_phone_book_command, 
+        'description': 'Отображает данные из телефонного справочника'
+    }
 }

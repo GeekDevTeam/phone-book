@@ -1,8 +1,6 @@
 from core.format import FORMATS
 import models.UserData as UserDataModule
 
-from commands.entry import commands
-
 def msg_startup():
     return """
 Приложение "Телефонный справочник:"
@@ -90,6 +88,8 @@ def msg_add_new_user_success(user_data: UserDataModule.UserData):
     """
 
 def msg_all_commands():
+    from commands.entry import commands
+    
     msg = ""
     command_names = commands.keys()
     for command_name in command_names:
