@@ -28,13 +28,13 @@ def select_format_view():
     format_id = -1
     while is_exist_index(format_core.FORMATS, format_id) is False:
         clear()
-        meny.print_select_format_view()
+        print(meny.msg_select_format_view())
         format_id = int(input("Введите пожалуйста format_id желаемого формата из меню: "))
         if is_exist_index(format_core.FORMATS, format_id) is True:
             clear()
             return format_id
 
-        meny.print_unknown_command()
+        print(meny.msg_unknown_command())
         meny.print_pause()
 
 def startup_view():
@@ -53,7 +53,7 @@ def startup_view():
     answer = -1
     while answer != 0:
         clear()
-        meny.print_startup()
+        print(meny.msg_startup())
         answer = int(input())
         clear()
         if answer == StartupCommands.SHOW_DATA:
@@ -67,7 +67,7 @@ def startup_view():
             format_data_convert_res = convert_format_by_format_id(users, format_id)
             
             write_text_in_file(OUTPUT_FULL_FILE_NAME, format_data_convert_res)
-            meny.print_success_convert_format(OUTPUT_FULL_FILE_NAME)
+            print(meny.msg_success_convert_format(OUTPUT_FULL_FILE_NAME))
         elif answer == StartupCommands.ADD_NEW_USER:
             print(meny.msg_add_new_user_view())
             new_user_data =  UserData.parse(
@@ -82,10 +82,10 @@ def startup_view():
             print(meny.msg_add_new_user_success(new_user_data))
             break
         elif answer == StartupCommands.EXIT:
-            meny.print_shutdown()
+            print(meny.msg_shutdown())
             break
         else:
-            meny.print_unknown_command()
+            print(meny.msg_unknown_command())
         meny.print_pause()
     
 def run():
