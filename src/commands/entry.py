@@ -17,7 +17,7 @@ commands = {
         'description': 'Отображает список доступных команд'
     },
     'show': {
-        'comand_handler': show_phone_book_command, 
-        'description': 'Сообщает данные пользователя из справочника'
+        'command_handler': show_phone_book_command, 
+        'description': 'Отображает данные из телефонного справочника'
     }
 }
