@@ -15,4 +15,8 @@ commands = {
         'command_handler': help_command,
         'description': 'Отображает список доступных команд'
     },
+    'show': {
+        'comand_handler': show_command, 
+        'description': 'Сообщает данные пользователя из справочника'
+    }
 }
